@@ -1,0 +1,44 @@
+<% layout('/layouts/boilerplate') %>
+<body>
+    <% if(matchedListings.length > 0) { %>
+    <h3>Search result for <%= query %></h3>
+   
+
+    <div class="row mt-3 row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+         
+        <% for(let listing of matchedListings) {%>
+            <div class="col">     
+                <a href="/listings/<%= listing._id %>" class="listing_link">
+                    <div class="card listing-card col " style="width: 20rem;">
+                        <img src="<%= listing.image.url %>" 
+                            class="card-img-top" 
+                            alt="<%= listing.image.filename %>" 
+                            style="height: 20rem;">
+                        <div class="card-img-overlay"></div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <b><%= listing.title %></b>  <br>    
+                                &#2547;<%= listing.price.toLocaleString('bn-BD') %> /night    
+                                <i class="tax-info">&nbsp; &nbsp; +18% GST</i>          
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        
+        <% } %>
+    </div>
+    <% } else { %>
+
+  
+        <div class="row mt-5 ms-5">
+    
+            <div class="col-md-8 offset-3 mt-5">
+                <h4>No Listings found for "<%= query %>"</h4>
+            </div>
+        </div>
+    <%}%>
+
+    <script src="/js/taxToggle.js"></script>
+</body>
