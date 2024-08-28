@@ -75,6 +75,7 @@ module.exports.createListing =async(req,res,next)=>{
 
     newListing.owner = req.user._id;
     newListing.image = {url,filename};
+    console.log(newListing.image);
     newListing.geolocation = response.body.features[0].geometry;
 
     let savedListing = await newListing.save();
