@@ -1,1 +1,1 @@
-# mern_eanderLust_project
+# WanderLust_project
